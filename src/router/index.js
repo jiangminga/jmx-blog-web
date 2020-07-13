@@ -19,12 +19,12 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/Home',
+    redirect: '/',
     children: [
       {
-        path: '/Home',
+        path: '/',
         component: () => import('@/views/Home'),
-        name: 'Home',
+        name: '/',
         meta: { title: 'Home', icon: 'home', affix: true }
       }
     ]
