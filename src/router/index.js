@@ -26,19 +26,25 @@ const routes = [
         component: () => import('@/views/Home'),
         name: '/',
         meta: { title: 'Home', icon: 'home', affix: true }
-      }
+      },
+      // {
+      //   path: 'article/info/:id',
+      //   component: () => import('@/views/article/info'),
+      //   name: 'articleInfo',
+      //   meta: { title: 'info', icon: 'info', affix: true }
+      // }
     ]
   },
   {
-    path: '/About',
+    path: '/article/info',
     component: Layout,
-    redirect: '/About',
+    redirect: '/article/info',
     children: [
       {
-        path: '/About',
-        component: () => import('@/views/About'),
-        name: 'About',
-        meta: { title: 'About', affix: true }
+        path: '/article/info/:id',
+        component: () => import('@/views/article/info'),
+        name: 'articleInfo',
+        meta: { title: 'info', icon: 'info', affix: true }
       }
     ]
   }
