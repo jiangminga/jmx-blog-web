@@ -60,27 +60,13 @@
             <Layout style="padding: 0 30px;">
                 <Content :style="{margin: '88px 20px 0', background: '#fff'}">
                     <Layout>
-                        <Sider v-if="true" style="background: #fff;border-right: 1px solid  #d7dde4;">
+                        <Sider v-show="this.$store.getters.getLeftMenu.length>0" style="background: #fff;border-right: 1px solid  #d7dde4;">
                             <div :class="{'left-menu-is-fixed' : isFixed}">
                                 <Menu active-name="1" theme="light" width="auto" :open-names="['1']" style="height: 595px;overflow-y: auto;">
-                                    <MenuGroup title="内容管理">
-                                        <MenuItem name="1">
-                                            <Icon type="md-document" />
-                                            文章管理
-                                        </MenuItem>
-                                        <MenuItem name="2">
-                                            <Icon type="md-chatbubbles" />
-                                            评论管理
-                                        </MenuItem>
-                                    </MenuGroup>
-                                    <MenuGroup title="统计分析">
-                                        <MenuItem name="3">
-                                            <Icon type="md-heart" />
-                                            用户留存
-                                        </MenuItem>
-                                        <MenuItem name="4">
-                                            <Icon type="md-leaf" />
-                                            流失用户
+                                    <MenuGroup v-for="(item,index) in this.$store.getters.getLeftMenu" :key="index" :title="item.name">
+                                        <MenuItem v-for="(item,index) in item.children" :key="index">
+                                            <Icon :type="item.icon" />
+                                            {{item.name}}
                                         </MenuItem>
                                     </MenuGroup>
                             </Menu>
@@ -90,8 +76,8 @@
                             <router-view/>
                         </Content>
                         <div id="boxFixed" :class="{'right-menu-is-fixed' : isFixed}">
-                            <Sider :style="{background: '#fff'}" style="height: 595px;margin-left: 20px;text-align: center;">
-                                <img class="right_head_img" src=""/><br>
+                            <Sider :style="{background: '#fff'}" style="height: 595px;overflow-y: auto;margin-left: 20px;text-align: center;">
+                                <img class="head_img" src="https://upload.jianshu.io/users/upload_avatars/3113531/cabddb0c13f3?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp"/><br>
                                 <Button size="small" type="success" >登录</Button>
                                 <Button size="small" style="margin-left: 10px">注册</Button>
                                 <Divider>文章推荐</Divider>
@@ -103,6 +89,7 @@
                                 <p>123</p>
                                 <p>123</p>
                                 <p>123</p>
+                                <a><p style="margin: 10px 0;">>>>>>更多<<<<<</p></a>
                                 <Divider>作者推荐</Divider>
                                 <p>123</p>
                                 <p>123</p>
@@ -111,6 +98,16 @@
                                 <p>123</p>
                                 <p>123</p>
                                 <p>123</p>
+                                <p>123</p>
+                                <p>123</p>
+                                <p>123</p>
+                                <p>123</p>
+                                <p>123</p>d
+                                <p>123</p>
+                                <p>123</p>
+                                <p>123</p>
+                                <p>123</p>
+                                <a><p style="margin: 10px 0;">>>>>>更多<<<<<</p></a>
                             </Sider>
                         </div>
                     </Layout>
@@ -127,7 +124,7 @@
         data() {
             return {
                 isFixed: false,
-                offsetTop:10
+                offsetTop: 10
             }
         },
         mounted(){
@@ -138,8 +135,8 @@
         },
         methods:{
             initHeight () {
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-                this.isFixed = scrollTop > 28 ? true : false;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+                this.isFixed = scrollTop > 28
             },
         },
         destroyed () {
@@ -181,13 +178,5 @@
         left: 51px;
         top: 65px;
         bottom: 80px;
-    }
-    .right_head_img{
-        height: 60px;
-        width: 60px;
-        border-radius:50%;
-        -webkit-border-radius:50%;
-        -moz-border-radius:50%;
-        margin-top: 15px;
     }
 </style>

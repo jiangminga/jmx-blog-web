@@ -24,27 +24,20 @@ const routes = [
       {
         path: '/',
         component: () => import('@/views/Home'),
-        name: '/',
-        meta: { title: 'Home', icon: 'home', affix: true }
-      },
-      // {
-      //   path: 'article/info/:id',
-      //   component: () => import('@/views/article/info'),
-      //   name: 'articleInfo',
-      //   meta: { title: 'info', icon: 'info', affix: true }
-      // }
+        name: '首页',
+        meta: { title: '首页', icon: 'home', affix: true }
+      }
     ]
   },
   {
-    path: '/article/info',
+    path: '/article',
     component: Layout,
-    redirect: '/article/info',
     children: [
       {
-        path: '/article/info/:id',
+        path: 'info',
         component: () => import('@/views/article/info'),
-        name: 'articleInfo',
-        meta: { title: 'info', icon: 'info', affix: true }
+        name: '文章详情',
+        meta: { title: '文章详情', icon: 'info', affix: true }
       }
     ]
   }

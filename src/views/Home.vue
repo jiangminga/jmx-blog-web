@@ -3,7 +3,7 @@
     <Row type="flex" justify="space-around">
       <Col v-for="item in 8" :key="item" span="11">
         <div class="card">
-          <a href="" @click="info()">
+          <a @click="info()">
             <div class="card-image">
               <img src="http://demo.jb51.net/js/2016/CSS3_kapian/img/2.jpg"
                    alt="Orange" />
@@ -38,12 +38,9 @@
 
 export default {
   name: "Home",
-  components: {
-  },
   methods: {
     info() {
-      this.$router.replace({path: '/redirect/article/info?id=123'})
-      // this.$router.push({path: '/article/info', query: {id: 123}})
+      this.$router.push({path: '/article/info', query: {id: 123}})
     }
   }
 };
@@ -102,4 +99,4 @@ export default {
   .card-date, .card-excerpt {
     color: #777;
   }
-</style>
+</style>I
